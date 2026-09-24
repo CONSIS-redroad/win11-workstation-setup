@@ -1,4 +1,4 @@
-{
+﻿{
   "ProfileName": "ConsisAI - stanowisko projektanta i kodu",
   "ProfileDesc": "Wybierz role (architekt, civil, programista). Wspolna baza: Python, 7-Zip, PDF, asystent AI. CAD (Revit, AutoCAD, IronCAD, GstarCAD) dokladasz, gdy masz instalator.",
   "Roles": [
@@ -31,18 +31,36 @@
     {
       "Id": "wspolne",
       "Name": "Podstawa (kazdy, takze nie-programista)",
-      "Description": "Archiwum, PDF, Python. To odpalasz zawsze.",
+      "Description": "Przegladarki, komunikatory, gry (Steam/GOG), archiwum, PDF, Python, Grok Bot. Zaznacz tylko to, czego uzywasz.",
       "Winget": [
         { "Name": "7-Zip", "Id": "7zip.7zip", "Checked": true },
         { "Name": "Sumatra PDF", "Id": "SumatraPDF.SumatraPDF", "Checked": true },
         { "Name": "PDF24 Creator", "Id": "geeksoftwareGmbH.PDF24Creator", "Checked": true },
-        { "Name": "Python 3.12", "Id": "Python.Python.3.12", "Checked": true }
+        { "Name": "Python 3.12", "Id": "Python.Python.3.12", "Checked": true },
+        { "Name": "Google Chrome", "Id": "Google.Chrome", "Checked": true },
+        { "Name": "Mozilla Firefox", "Id": "Mozilla.Firefox", "Checked": false },
+        { "Name": "Opera", "Id": "Opera.Opera", "Checked": false },
+        { "Name": "WhatsApp", "Id": "9NKSQGP7F2NH", "Checked": true },
+        { "Name": "Telegram Desktop", "Id": "Telegram.TelegramDesktop", "Checked": true },
+        { "Name": "Messenger (Microsoft Store)", "Id": "9WZDNCRF0083", "Checked": true },
+        { "Name": "Steam", "Id": "Valve.Steam", "Checked": true },
+        { "Name": "GOG GALAXY", "Id": "GOG.Galaxy", "Checked": true },
+        { "Name": "Epic Games Launcher", "Id": "EpicGames.EpicGamesLauncher", "Checked": false },
+        { "Name": "Battle.net", "Id": "Blizzard.BattleNet", "Checked": false }
+      ],
+      "DirectInstalls": [
+        {
+          "Name": "Grok Bot (Windows x64)",
+          "Url": "https://downloads.cursor.com/grokbot/stable/win32-x64/0.58.0/Grok_Bot_0.58.0_Setup.exe",
+          "Args": "/S",
+          "Checked": true
+        }
       ]
     },
     {
       "Id": "ai",
       "Name": "Asystenci AI (wybierz 1-2)",
-      "Description": "Claude, Gemini, Cursor (Grok narazie przez przegladarke / xAI). Nie musisz wszystkich.",
+      "Description": "Claude, Gemini, Cursor. Grok Bot jest w Podstawie (link z cursor.com/download/bot). Nie musisz wszystkich.",
       "Winget": [
         { "Name": "Claude Code (CLI)", "Id": "Anthropic.ClaudeCode", "Checked": true },
         { "Name": "Cursor AI", "Id": "Anysphere.Cursor", "Checked": true },

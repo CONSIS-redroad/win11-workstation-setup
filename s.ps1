@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Konfigurator stanowiska Windows 11 - GUI Fluent (Stitch) + logika profili.
 #>
@@ -117,6 +117,86 @@ $global:lastAuditPath = $null
 $global:currentPage = "config"
 $global:linkPick = $null
 $global:skipRoleChange = $false
+$script:BulkChangeConfirmThreshold = 3
+
+function Get-JsonList {
+    param($Value)
+    return @($Value | Where-Object { $_ })
+}
+
+function Show-UiMessage {
+    param(
+        [string]$Message,
+        [string]$Title = "Konfigurator stanowiska",
+        [System.Windows.MessageBoxButton]$Buttons = [System.Windows.MessageBoxButton]::OK,
+        [System.Windows.MessageBoxImage]$Icon = [System.Windows.MessageBoxImage]::Information
+    )
+    return [System.Windows.MessageBox]::Show($Message, $Title, $Buttons, $Icon)
+}
+
+function Invoke-UiPump {
+    try {
+        [System.Windows.Threading.Dispatcher]::CurrentDispatcher.Invoke(
+            [Action] {}, [System.Windows.Threading.DispatcherPriority]::Background)
+    } catch {}
+}
+
+function Ensure-SystemRestorePoint {
+    param([string]$Description = "Przed-konfiguratorem-stanowiska")
+    try {
+        Write-UiLog "[*] Tworzenie punktu przywracania (moze potrwac 1-2 min)..." "Cyan"
+        if ($txtRunStep) { $txtRunStep.Text = "Punkt przywracania systemu..." }
+        if ($txtLinkStatus) { $txtLinkStatus.Text = "Punkt przywracania (1-2 min)..." }
+        Invoke-UiPump
+        Enable-ComputerRestore -Drive "C:\" -ErrorAction SilentlyContinue | Out-Null
+        $recent = @(Get-ComputerRestorePoint -ErrorAction SilentlyContinue |
+            Sort-Object SequenceNumber -Descending |
+            Select-Object -First 1)
+        if ($recent.Count -gt 0 -and $recent[0].CreationTime -gt (Get-Date).AddMinutes(-10)) {
+            Write-UiLog "[i] Swiezy punkt przywracania juz istnieje (ostatnie 10 min)." "Yellow"
+            return $true
+        }
+        Invoke-UiPump
+        Checkpoint-Computer -Description $Description -RestorePointType MODIFY_SETTINGS
+        Write-UiLog "[OK] Punkt przywracania: $Description" "Green"
+        return $true
+    } catch {
+        Write-UiLog "[!] Nie utworzono punktu przywracania: $_" "Red"
+        $ans = Show-UiMessage -Message (
+            "Nie udalo sie utworzyc punktu przywracania systemu:`n`n$_`n`n" +
+            "Wlacz Przywracanie systemu dla dysku C: w ustawieniach Windows albo kontynuuj na wlasne ryzyko.") `
+            -Title "Przywracanie systemu" `
+            -Buttons YesNo -Icon Warning
+        return ($ans -eq [System.Windows.MessageBoxResult]::Yes)
+    }
+}
+
+function Confirm-ManyChanges {
+    param(
+        [int]$Count,
+        [string[]]$Names,
+        [string]$Context = "zmian w systemie"
+    )
+    if ($Count -lt $script:BulkChangeConfirmThreshold) { return $true }
+    $list = @($Names | Select-Object -First 15)
+    $preview = ($list | ForEach-Object { "  - $_" }) -join "`n"
+    $extra = ""
+    if ($Names.Count -gt $list.Count) {
+        $extra = "`n  ... i $($Names.Count - $list.Count) dalszych pozycji"
+    }
+    $msg = @"
+Zaznaczono $Count pozycji ($Context).
+
+To moze trwac dlugo, wymagac restartu albo spowodowac konflikty miedzy pakietami.
+Przed startem utworzymy punkt przywracania systemu (regula tego narzedzia).
+
+$preview$extra
+
+Kontynuowac?
+"@
+    $r = Show-UiMessage -Message $msg -Title "Uwaga: wiele zmian naraz" -Buttons YesNo -Icon Warning
+    return ($r -eq [System.Windows.MessageBoxResult]::Yes)
+}
 
 function Apply-Role {
     param($Role)
@@ -126,7 +206,16 @@ function Apply-Role {
     foreach ($ctrl in $global:activeControls) {
         if ($ctrl.Tag.Type -eq "Tweak") { continue }
         $sec = [string]$ctrl.Tag.Section
-        $ctrl.IsChecked = ($on -contains $sec)
+        if ($on -contains $sec) {
+            $want = $true
+            $data = $ctrl.Tag.Data
+            if ($data -and ($data.PSObject.Properties.Name -contains "Checked")) {
+                $want = [bool]$data.Checked
+            }
+            $ctrl.IsChecked = $want
+        } else {
+            $ctrl.IsChecked = $false
+        }
     }
     Update-SelectionBadges
 }
@@ -136,8 +225,15 @@ function Fill-RoleCombo {
     $global:skipRoleChange = $true
     $keep = [string]$cmbRole.SelectedItem
     $cmbRole.Items.Clear()
-    $roles = @($global:currentProfileData.Roles)
+    $roles = @()
+    if ($global:currentProfileData -and $global:currentProfileData.Roles) {
+        $roles = Get-JsonList $global:currentProfileData.Roles
+    }
+    if ($txtRoleBlurb -and ($roles.Count -eq 0)) {
+        $txtRoleBlurb.Text = "Ten profil nie ma rol - zaznacz pozycje recznie."
+    }
     foreach ($r in $roles) {
+        if (-not $r.Name) { continue }
         $cmbRole.Items.Add([string]$r.Name) | Out-Null
     }
     if ($keep -and (@($cmbRole.Items) -contains $keep)) {
@@ -170,7 +266,7 @@ function Write-UiLog {
     if ($txtLog) { $txtLog.AppendText("$line`r`n"); $txtLog.ScrollToEnd() }
     if ($txtRunLog) { $txtRunLog.AppendText("$line`r`n"); $txtRunLog.ScrollToEnd() }
     Write-Host $line -ForegroundColor $Color
-    [System.Windows.Threading.Dispatcher]::CurrentDispatcher.Invoke([Action]{}, "Background")
+    Invoke-UiPump
 }
 
 function Reset-Nav {
@@ -317,6 +413,11 @@ function Invoke-LinkSave {
 function Invoke-LinkInstallNow {
     if (-not $global:linkPick) { $txtLinkStatus.Text = "Najpierw wybierz kandydata."; return }
     $c = $global:linkPick
+    Write-UiLog "[*] Punkt przywracania przed instalacja z linku..." "Cyan"
+    if (-not (Ensure-SystemRestorePoint "Przed-instalacja-z-linku")) {
+        $txtLinkStatus.Text = "Anulowano (brak punktu przywracania)."
+        return
+    }
     $txtLinkStatus.Text = "Cicha instalacja..."
     [System.Windows.Threading.Dispatcher]::CurrentDispatcher.Invoke([Action]{}, "Background")
     try {
@@ -453,11 +554,11 @@ function New-SectionCard {
     $secId = [string]$Section.Id
     $global:sectionBadges[$secId] = $badge
 
-    foreach ($app in @($Section.Winget)) {
+    foreach ($app in (Get-JsonList $Section.Winget)) {
         $row = New-OptionRow -Title $app.Name -Subtitle $app.Id -Checked $app.Checked -Tag ([PSCustomObject]@{ Type = "Winget"; Data = $app; Section = $secId })
         $root.Children.Add($row) | Out-Null
     }
-    foreach ($inst in @($Section.DirectInstalls)) {
+    foreach ($inst in (Get-JsonList $Section.DirectInstalls)) {
         $sub = if ($inst.LocalFile) { "Lokalny: $($inst.LocalFile)" } elseif ($inst.Url) { "URL $($inst.Args)" } else { "Brak zrodla" }
         $row = New-OptionRow -Title $inst.Name -Subtitle $sub -Checked $inst.Checked -Tag ([PSCustomObject]@{ Type = "Direct"; Data = $inst; Section = $secId })
         $root.Children.Add($row) | Out-Null
@@ -470,45 +571,45 @@ function New-SectionCard {
 function Update-OptionsList {
     param($profilePath)
 
-    $pnlAppSections.Children.Clear()
-    $pnlTweakItems.Children.Clear()
-    $global:activeControls.Clear()
-    $global:sectionBadges = @{}
-    $global:currentProfileData = $null
-
-    if (-not (Test-Path $profilePath)) { return }
-
     try {
+        $pnlAppSections.Children.Clear()
+        $pnlTweakItems.Children.Clear()
+        $global:activeControls.Clear()
+        $global:sectionBadges = @{}
+        $global:currentProfileData = $null
+
+        if (-not (Test-Path $profilePath)) { return }
+
         $rawJson = Get-Content -Path $profilePath -Raw -Encoding UTF8
         $global:currentProfileData = $rawJson | ConvertFrom-Json
+
+        $p = $global:currentProfileData
+        $txtProfileName.Text = if ($p.ProfileName) { $p.ProfileName } else { [IO.Path]::GetFileNameWithoutExtension($profilePath) }
+        $txtProfileDesc.Text = if ($p.ProfileDesc) { $p.ProfileDesc } else { "Dynamiczny profil JSON: pakiety, instalatory, tweaki" }
+        $txtProfileFile.Text = [IO.Path]::GetFileName($profilePath)
+        $txtStatWinUtil.Text = if ($p.WinUtilConfig) { $p.WinUtilConfig } else { "brak" }
+
+        $accents = @("#74D1FF", "#A3C9FF", "#7ADA95", "#159CCB")
+        $i = 0
+        foreach ($sec in (Get-ProfileSections $p)) {
+            $color = $accents[$i % $accents.Count]
+            $pnlAppSections.Children.Add((New-SectionCard -Section $sec -AccentHex $color)) | Out-Null
+            $i++
+        }
+
+        $tweaks = Get-JsonList $p.SystemTweaks
+        $txtStatTweaks.Text = "$($tweaks.Count) tweakow"
+        foreach ($tw in $tweaks) {
+            $row = New-OptionRow -Title $tw.Name -Subtitle $tw.Type -Checked $tw.Checked -Tag ([PSCustomObject]@{ Type = "Tweak"; Data = $tw; Section = "tweaks" })
+            $pnlTweakItems.Children.Add($row) | Out-Null
+        }
+        Update-SelectionBadges
+        Update-LinkSections
+        Fill-RoleCombo
     } catch {
-        Write-UiLog "Blad czytania JSON: $_" "Red"
-        return
+        Write-UiLog "Blad ladowania profilu: $_" "Red"
+        Show-UiMessage -Message "Nie udalo sie wczytac profilu:`n`n$_" -Title "Profil JSON" -Icon Error | Out-Null
     }
-
-    $p = $global:currentProfileData
-    $txtProfileName.Text = if ($p.ProfileName) { $p.ProfileName } else { [IO.Path]::GetFileNameWithoutExtension($profilePath) }
-    $txtProfileDesc.Text = if ($p.ProfileDesc) { $p.ProfileDesc } else { "Dynamiczny profil JSON: pakiety, instalatory, tweaki" }
-    $txtProfileFile.Text = [IO.Path]::GetFileName($profilePath)
-    $txtStatWinUtil.Text = if ($p.WinUtilConfig) { $p.WinUtilConfig } else { "brak" }
-
-    $accents = @("#74D1FF", "#A3C9FF", "#7ADA95", "#159CCB")
-    $i = 0
-    foreach ($sec in (Get-ProfileSections $p)) {
-        $color = $accents[$i % $accents.Count]
-        $pnlAppSections.Children.Add((New-SectionCard -Section $sec -AccentHex $color)) | Out-Null
-        $i++
-    }
-
-    $tCount = @($p.SystemTweaks).Count
-    $txtStatTweaks.Text = "$tCount tweakow"
-    foreach ($tw in @($p.SystemTweaks)) {
-        $row = New-OptionRow -Title $tw.Name -Subtitle $tw.Type -Checked $tw.Checked -Tag ([PSCustomObject]@{ Type = "Tweak"; Data = $tw; Section = "tweaks" })
-        $pnlTweakItems.Children.Add($row) | Out-Null
-    }
-    Update-SelectionBadges
-    Update-LinkSections
-    Fill-RoleCombo
 }
 
 function New-StatusRow {
@@ -651,6 +752,21 @@ function Get-WinUtilConfigPath {
 
 function Start-WinUtil {
     param([switch]$Run)
+    if ($Run) {
+        $r = Show-UiMessage -Message (
+            "WinUtil (Auto -Run) zmieni ustawienia Windows (tweaki, debloat, uslugi).`n`n" +
+            "Przed uruchomieniem utworzymy punkt przywracania systemu.`n`nKontynuowac?") `
+            -Title "WinUtil - zmiany w systemie" -Buttons YesNo -Icon Warning
+        if ($r -ne [System.Windows.MessageBoxResult]::Yes) {
+            Write-UiLog "WinUtil Auto anulowany." "Yellow"
+            return
+        }
+        Write-UiLog "[*] Punkt przywracania przed WinUtil..." "Cyan"
+        if (-not (Ensure-SystemRestorePoint "Przed-WinUtil-Run")) {
+            Write-UiLog "WinUtil Auto przerwany - brak punktu przywracania." "Red"
+            return
+        }
+    }
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     $cfg = Get-WinUtilConfigPath
     Write-UiLog "Pobieranie Chris Titus WinUtil..." "Cyan"
@@ -672,12 +788,29 @@ function Invoke-SelectedInstall {
         return
     }
 
+    $names = @($items | ForEach-Object {
+        $d = $_.Tag.Data
+        if ($d.Name) { [string]$d.Name } else { [string]$_.Tag.Type }
+    })
+    if (-not (Confirm-ManyChanges -Count $items.Count -Names $names -Context "instalacja profilu")) {
+        Write-UiLog "Anulowano - uzytkownik przerwal przy wielu pozycjach." "Yellow"
+        return
+    }
+
     Show-Page "run"
     $txtRunTitle.Text = "Wykonywanie: $($txtProfileName.Text)"
     $txtRunLog.Clear()
     $n = 0
     $total = $items.Count
     $txtReadyLine.Text = "Wdrozenie w toku..."
+
+    Write-UiLog "[*] Punkt przywracania przed instalacja profilu..." "Cyan"
+    if (-not (Ensure-SystemRestorePoint "Przed-instalacja-profilu")) {
+        Write-UiLog "Przerwano - brak punktu przywracania." "Red"
+        $txtReadyLine.Text = "Gotowy do wdrozenia"
+        Show-Page "config"
+        return
+    }
 
     foreach ($ctrl in $items) {
         $n++
@@ -765,7 +898,7 @@ foreach ($p in $profiles) {
 $cmbProfiles.Add_SelectionChanged({
     if ($cmbProfiles.SelectedItem) {
         $chosen = Join-Path $scriptDir $cmbProfiles.SelectedItem.ToString()
-        Update-OptionsList $chosen
+        try { Update-OptionsList $chosen } catch { Write-UiLog "Blad profilu: $_" "Red" }
     }
 })
 
@@ -773,13 +906,19 @@ if ($cmbRole) {
     $cmbRole.Add_SelectionChanged({
         if ($global:skipRoleChange) { return }
         if (-not $cmbRole.SelectedItem) { return }
+        if (-not ($global:currentProfileData -and $global:currentProfileData.Roles)) { return }
         $role = @($global:currentProfileData.Roles) | Where-Object { $_.Name -eq $cmbRole.SelectedItem } | Select-Object -First 1
         Apply-Role $role
     })
 }
 
 if ($profiles.Count -gt 0) {
-    $cmbProfiles.SelectedIndex = 0
+    $prefer = "profil_consis.json"
+    $idx = 0
+    for ($i = 0; $i -lt $cmbProfiles.Items.Count; $i++) {
+        if ($cmbProfiles.Items[$i].ToString() -eq $prefer) { $idx = $i; break }
+    }
+    try { $cmbProfiles.SelectedIndex = $idx } catch { Write-UiLog "Blad startu profilu: $_" "Red" }
 }
 
 $btnNavConfig.Add_Click({ Show-Page "config" })
@@ -841,4 +980,19 @@ $btnOpenFolder.Add_Click({ Start-Process explorer.exe $scriptDir })
 Show-Page "config"
 Write-UiLog "Panel gotowy. Profile: $($profiles.Count)." "Cyan"
 
-$window.ShowDialog() | Out-Null
+$app = [System.Windows.Application]::Current
+if (-not $app) { $app = New-Object System.Windows.Application }
+$app.ShutdownMode = [System.Windows.ShutdownMode]::OnMainWindowClose
+$app.add_DispatcherUnhandledException({
+    param($sender, $e)
+    $msg = [string]$e.Exception.Message
+    try { Write-UiLog "BLAD GUI: $msg" "Red" } catch {}
+    try { Show-UiMessage -Message "Blad GUI (okno zostaje otwarte):`n`n$msg" -Title "Konfigurator stanowiska" -Icon Error | Out-Null } catch {}
+    $e.Handled = $true
+})
+
+try {
+    [void]$window.ShowDialog()
+} catch {
+    Show-UiMessage -Message "Okno padlo przy starcie:`n`n$_" -Title "Konfigurator stanowiska" -Icon Error | Out-Null
+}

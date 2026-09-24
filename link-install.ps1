@@ -195,6 +195,9 @@ function Add-LinkToProfile {
     if (-not $sec) { throw "Brak sekcji $SectionId" }
 
     if ($Candidate.Kind -eq "direct" -or ($Candidate.Url -and -not $Candidate.Id)) {
+        if (-not ($sec.PSObject.Properties.Name -contains "DirectInstalls")) {
+            $sec | Add-Member -NotePropertyName DirectInstalls -NotePropertyValue @() -Force
+        }
         foreach ($d in @($sec.DirectInstalls)) {
             if ($d.Url -eq $Candidate.Url) { return "already-direct" }
         }

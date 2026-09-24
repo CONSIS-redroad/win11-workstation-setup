@@ -57,7 +57,7 @@ Modele AI łatwo zjadają JSON (biblioteki, rozszerzenia, ID winget). Nie lubią
 
 - **Architekt / BIM** — Revit, AutoCAD, IronCAD (instalatory lokalne) + PDF/Python/AI
 - **Civil** — GstarCAD, HP Click, Tesseract, podpisy
-- **Podstawa** — 7-Zip, Sumatra/PDF24, Python
+- **Podstawa** — przeglądarki (Chrome/Firefox/Opera), WhatsApp/Telegram/Messenger, Steam/GOG/Epic, 7-Zip, PDF, Python, Grok Bot
 - **AI** — Claude Code, Cursor, opcjonalnie Gemini CLI
 
 ## Cykl na czystej maszynie (teraz → +3 mc)
