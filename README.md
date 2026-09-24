@@ -1,6 +1,42 @@
-# Konfigurator stanowiska Windows 11
+# ConsisAI - stanowisko projektanta i kodu
 
-## Po co to jest (klucz)
+Paczka i panel dla **biur projektowych**, ktore juz mieszaja CAD z AI. Nie musisz byc programista, zeby kliknac role Architekt i dostac 7-Zip, PDF, Pythona i Claude'a. Jesli automatyzujesz BIM - dokladasz Git i Dockera.
+
+## Po co to jest publiczne
+
+Zeby **spolecznosc projektantow glosowala** (emotka 👍, bez Gita):
+
+- jakie apki realnie stoja na stanowisku (Revit, IronCAD, GstarCAD, Claude, …)
+- co w Windows 11 przeszkadza przy modelu
+- jak ktoś w ogole wpuszcza AI do projektu
+
+Szablony: **[SPOLECZNOSC.md](SPOLECZNOSC.md)**. Najczesciej glosowane rzeczy wchodza do zalecen w `profil_consis.json`.
+
+To tez **wizytowka**: projektant drogowy, niedoszly programista, ktory ostatnio siedzi po 10 godzin w kodzie, nie przed CADem. Consis / [Redroad](https://www.redroad.pl). Chodzi o to, zeby kolegów po fachu wprowadzic w programowanie i AI, zanim zmiana nawykow ich wyprzedzi.
+
+## Start (gdy repo publiczne)
+
+Nie `winget https://...`. Jak Chris Titus, tylko paczka z panelem:
+
+```powershell
+irm https://raw.githubusercontent.com/CONSIS-redroad/win11-workstation-setup/main/bootstrap.ps1 | iex
+```
+
+Pozniej: `irm https://www.redroad.pl/consisai | iex` (ten sam skrypt na stronie).
+
+
+## Role w panelu
+
+| Rola | Co zaznacza |
+| --- | --- |
+| Architekt / BIM | podstawa + AI + Revit/AutoCAD/IronCAD + podpisy |
+| Projektant drogowy / civil | podstawa + AI + GstarCAD/ploter/OCR + podpisy |
+| Programista | podstawa + AI + Git/Docker/Node |
+| Pelne stanowisko Consis | wszystko |
+
+CAD z Autodesk/IronCAD **nie jest w winget** jak 7-Zip. Wrzuc instalator do folderu paczki albo wklej link w zakladce **Z linku**.
+
+## Po co to jest (JSON + obraz)
 
 Dwa byty, których nie wolno mylić:
 
@@ -19,9 +55,10 @@ Modele AI łatwo zjadają JSON (biblioteki, rozszerzenia, ID winget). Nie lubią
 
 ## Dwie sekcje stanowiska
 
-- **Biuro / projektowanie** — GstarCAD, Podpis GOV, Szafir KIR, HP Click, Tesseract
-- **Programowanie i AI** — Git, GitHub CLI (`gh`), Python, Docker, Node, Cursor, Terminal
-- **Dostęp zdalny** — Chrome Remote Desktop
+- **Architekt / BIM** — Revit, AutoCAD, IronCAD (instalatory lokalne) + PDF/Python/AI
+- **Civil** — GstarCAD, HP Click, Tesseract, podpisy
+- **Podstawa** — 7-Zip, Sumatra/PDF24, Python
+- **AI** — Claude Code, Cursor, opcjonalnie Gemini CLI
 
 ## Cykl na czystej maszynie (teraz → +3 mc)
 
@@ -73,4 +110,4 @@ ust_2.json                lista ID WinUtil
 Trzymac w repo: skrypty, `profil_*.json`, `srodowisko.json`, `python-requirements.txt`.  
 Nie wrzucac: `*.exe`, `raport_stanu_*.json`, `.cursor/`, same obrazy `wbadmin`.
 
-To nie jest konkurencja dla [WinUtil](https://github.com/ChrisTitusTech/winutil) ani `winget configure`. To **przepis polskiego stanowiska CAD+AI + zrzut dla modeli + obraz dysku**.
+To nie jest konkurencja dla [WinUtil](https://github.com/ChrisTitusTech/winutil). To **zalecenia polskiego biura projektowego + glos spolecznosci + most do AI**.

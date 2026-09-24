@@ -1,0 +1,28 @@
+name: AI w biurze projektowym
+description: Jak (albo czy w ogole) uzywasz AI w projekcie. Glos 👍 na historie podobne do Twojej.
+title: "[AI] "
+labels: ["ai-nawyk", "spolecznosc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Po to jest to repo: wprowadzic projektantow w AI i programowanie, zanim zmiana nawykow ich wyprzedzi.
+  - type: dropdown
+    id: etap
+    attributes:
+      label: Gdzie jestes
+      options:
+        - Jeszcze tylko CAD, AI mnie omija
+        - Chat w przegladarce (ChatGPT / Claude / Gemini / Grok)
+        - Cursor / Claude Code przy dokumentacji i Excelu
+        - Pisze skrypty (Python, Dynamo, Grasshopper)
+        - Siedze w kodzie wiecej niz w CAD
+    validations:
+      required: true
+  - type: textarea
+    id: historia
+    attributes:
+      label: Co konkretnie AI ci zabralo albo dalo
+      placeholder: np. zestawienia, opisy STWiORB, sprawdzanie PDF, nauka Pythona
+    validations:
+      required: true

@@ -1,0 +1,34 @@
+name: Windows mi przeszkadza
+description: Co w Windows 11 wkurza przy CAD/BIM (telemetria, Copilot, wolny Explorer, sciezki). Glos 👍.
+title: "[Windows] "
+labels: ["windows-boli", "spolecznosc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Chodzi o rzeczy, ktore da sie wylaczyc albo obejsc (tweaki, WinUtil, ustawienia).
+        Nie o piractwo i nie o lamanie licencji Autodesk.
+  - type: input
+    id: objaw
+    attributes:
+      label: Co przeszkadza
+      placeholder: np. widgety, Copilot na pasku, limity sciezek, OneDrive w Explorerze
+    validations:
+      required: true
+  - type: dropdown
+    id: jak_czesto
+    attributes:
+      label: Jak bardzo boli
+      options:
+        - Drobiazg, ale codziennie
+        - Traci sie na tym godzine w tygodniu
+        - Blokuje prace (crash / lag przy modelu)
+    validations:
+      required: true
+  - type: textarea
+    id: wiecej
+    attributes:
+      label: Kiedy to sie dzieje
+      placeholder: np. przy otwieraniu DWG, przy chmurze, po aktualizacji Windows
+    validations:
+      required: false

@@ -1,0 +1,111 @@
+{
+  "ProfileName": "ConsisAI - stanowisko projektanta i kodu",
+  "ProfileDesc": "Wybierz role (architekt, civil, programista). Wspolna baza: Python, 7-Zip, PDF, asystent AI. CAD (Revit, AutoCAD, IronCAD, GstarCAD) dokladasz, gdy masz instalator.",
+  "Roles": [
+    {
+      "Id": "architekt",
+      "Name": "Architekt / BIM",
+      "Blurb": "PDF, 7-Zip, Python, Claude/Cursor + Autodesk/IronCAD gdy sa instalatory.",
+      "SectionsOn": ["wspolne", "ai", "bim", "podpisy"]
+    },
+    {
+      "Id": "civil",
+      "Name": "Projektant drogowy / civil",
+      "Blurb": "GstarCAD, ploter, OCR, podpisy, PDF, Python, AI.",
+      "SectionsOn": ["wspolne", "ai", "civil", "podpisy"]
+    },
+    {
+      "Id": "programista",
+      "Name": "Programista / automatyzacja",
+      "Blurb": "Git, gh, Python, Docker, Node, Cursor, Claude Code.",
+      "SectionsOn": ["wspolne", "ai", "kod"]
+    },
+    {
+      "Id": "pelne",
+      "Name": "Pelne stanowisko Consis (CAD + kod + AI)",
+      "Blurb": "Wszystkie sekcje. Na nowy komputer po obrazie dysku.",
+      "SectionsOn": ["wspolne", "ai", "bim", "civil", "kod", "podpisy", "zdalnie"]
+    }
+  ],
+  "Sections": [
+    {
+      "Id": "wspolne",
+      "Name": "Podstawa (kazdy, takze nie-programista)",
+      "Description": "Archiwum, PDF, Python. To odpalasz zawsze.",
+      "Winget": [
+        { "Name": "7-Zip", "Id": "7zip.7zip", "Checked": true },
+        { "Name": "Sumatra PDF", "Id": "SumatraPDF.SumatraPDF", "Checked": true },
+        { "Name": "PDF24 Creator", "Id": "geeksoftwareGmbH.PDF24Creator", "Checked": true },
+        { "Name": "Python 3.12", "Id": "Python.Python.3.12", "Checked": true }
+      ]
+    },
+    {
+      "Id": "ai",
+      "Name": "Asystenci AI (wybierz 1-2)",
+      "Description": "Claude, Gemini, Cursor (Grok narazie przez przegladarke / xAI). Nie musisz wszystkich.",
+      "Winget": [
+        { "Name": "Claude Code (CLI)", "Id": "Anthropic.ClaudeCode", "Checked": true },
+        { "Name": "Cursor AI", "Id": "Anysphere.Cursor", "Checked": true },
+        { "Name": "Google Gemini CLI", "Id": "Google.GeminiCLI", "Checked": false }
+      ]
+    },
+    {
+      "Id": "bim",
+      "Name": "Architektura / BIM (Autodesk, IronCAD)",
+      "Description": "Revit i AutoCAD nie sa w winget jak 7-Zip. Wrzuc instalator OEM do folderu paczki albo wklej link w zakladce Z linku.",
+      "DirectInstalls": [
+        { "Name": "Autodesk Revit", "Url": "", "LocalFile": "Revit_Installer.exe", "Args": "/S", "Checked": true },
+        { "Name": "Autodesk AutoCAD", "Url": "", "LocalFile": "AutoCAD_Installer.exe", "Args": "/S", "Checked": true },
+        { "Name": "IronCAD", "Url": "", "LocalFile": "IronCAD_Setup.exe", "Args": "/S", "Checked": true }
+      ]
+    },
+    {
+      "Id": "civil",
+      "Name": "Civil / drogi / CAD 2D",
+      "Description": "GstarCAD, ploter HP, OCR dokumentacji.",
+      "Winget": [
+        { "Name": "HP Click (wielkoformatowe)", "Id": "HP.HPClick", "Checked": true },
+        { "Name": "Tesseract OCR", "Id": "UB-Mannheim.TesseractOCR", "Checked": true }
+      ],
+      "DirectInstalls": [
+        { "Name": "GstarCAD 2022 PL", "Url": "", "LocalFile": "GstarCAD2022_PL_x64.exe", "Args": "/S", "Checked": true }
+      ]
+    },
+    {
+      "Id": "kod",
+      "Name": "Programowanie (gdy automatyzujesz BIM/CAD)",
+      "Description": "Git, GitHub, Docker, Node. Architektowi wystarczy Python z podstawy.",
+      "Winget": [
+        { "Name": "Git", "Id": "Git.Git", "Checked": true },
+        { "Name": "GitHub CLI (gh)", "Id": "GitHub.cli", "Checked": true },
+        { "Name": "GitHub Desktop", "Id": "GitHub.GitHubDesktop", "Checked": false },
+        { "Name": "Docker Desktop", "Id": "Docker.DockerDesktop", "Checked": true },
+        { "Name": "Node.js LTS", "Id": "OpenJS.NodeJS.LTS", "Checked": true },
+        { "Name": "Visual Studio Code", "Id": "Microsoft.VisualStudioCode", "Checked": false },
+        { "Name": "Windows Terminal", "Id": "Microsoft.WindowsTerminal", "Checked": true }
+      ]
+    },
+    {
+      "Id": "podpisy",
+      "Name": "Podpis elektroniczny (PL)",
+      "Description": "KIR / gov.pl - ciche flagi /S moga wymagac klikniecia u dostawcy.",
+      "DirectInstalls": [
+        { "Name": "Podpis GOV", "Url": "https://podpis.gov.pl/app/PodpisGovSetup.exe", "Args": "/S", "Checked": true },
+        { "Name": "Szafir KIR", "Url": "https://www.elektronicznypodpis.pl/gfx/elektronicznypodpis/userfiles/_public/aplikacja_szafir/szafir_instalator.exe", "Args": "/S", "Checked": true }
+      ]
+    },
+    {
+      "Id": "zdalnie",
+      "Name": "Dostep zdalny",
+      "Description": "Pulpit do stanowiska.",
+      "Winget": [
+        { "Name": "Chrome Remote Desktop", "Id": "Google.ChromeRemoteDesktopHost", "Checked": false }
+      ]
+    }
+  ],
+  "SystemTweaks": [
+    { "Name": "Wymus Dark Mode i Long Paths (>260)", "Type": "ThemeAndPaths", "Checked": true },
+    { "Name": "Pokaz ukryte pliki i rozszerzenia", "Type": "ExplorerView", "Checked": true }
+  ],
+  "WinUtilConfig": "ust_2.json"
+}

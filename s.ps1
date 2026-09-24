@@ -36,6 +36,8 @@ $window = [Windows.Markup.XamlReader]::Load($reader)
 function Get-Ui($name) { $window.FindName($name) }
 
 $cmbProfiles       = Get-Ui "cmbProfiles"
+$cmbRole           = Get-Ui "cmbRole"
+$txtRoleBlurb      = Get-Ui "txtRoleBlurb"
 $pnlAppSections    = Get-Ui "pnlAppSections"
 $pnlTweakItems     = Get-Ui "pnlTweakItems"
 $btnRunSelected    = Get-Ui "btnRunSelected"
@@ -114,6 +116,41 @@ $global:sectionBadges = @{}
 $global:lastAuditPath = $null
 $global:currentPage = "config"
 $global:linkPick = $null
+$global:skipRoleChange = $false
+
+function Apply-Role {
+    param($Role)
+    if (-not $Role) { return }
+    if ($txtRoleBlurb) { $txtRoleBlurb.Text = [string]$Role.Blurb }
+    $on = @($Role.SectionsOn)
+    foreach ($ctrl in $global:activeControls) {
+        if ($ctrl.Tag.Type -eq "Tweak") { continue }
+        $sec = [string]$ctrl.Tag.Section
+        $ctrl.IsChecked = ($on -contains $sec)
+    }
+    Update-SelectionBadges
+}
+
+function Fill-RoleCombo {
+    if (-not $cmbRole) { return }
+    $global:skipRoleChange = $true
+    $keep = [string]$cmbRole.SelectedItem
+    $cmbRole.Items.Clear()
+    $roles = @($global:currentProfileData.Roles)
+    foreach ($r in $roles) {
+        $cmbRole.Items.Add([string]$r.Name) | Out-Null
+    }
+    if ($keep -and (@($cmbRole.Items) -contains $keep)) {
+        $cmbRole.SelectedItem = $keep
+    } elseif ($cmbRole.Items.Count -gt 0) {
+        $cmbRole.SelectedIndex = 0
+    }
+    $global:skipRoleChange = $false
+    if ($cmbRole.SelectedItem) {
+        $role = @($global:currentProfileData.Roles) | Where-Object { $_.Name -eq $cmbRole.SelectedItem } | Select-Object -First 1
+        Apply-Role $role
+    }
+}
 
 function Get-ProfileSections {
     param($p)
@@ -471,6 +508,7 @@ function Update-OptionsList {
     }
     Update-SelectionBadges
     Update-LinkSections
+    Fill-RoleCombo
 }
 
 function New-StatusRow {
@@ -566,7 +604,9 @@ function Update-FileList {
     $pnlFileList.Children.Clear()
     $files = @(
         @{ Name = "ust_2.json"; Tag = "WinUtil"; Desc = "Lista ID Chris Titus WinUtil (instalacje, tweaki, AppX)." },
-        @{ Name = "profil_msi.json"; Tag = "Profil"; Desc = "Przepis stanowiska w JSON. Sekcje Biuro/CAD i Programowanie. AI poprawia ten plik = kopia srodowiska." },
+        @{ Name = "profil_consis.json"; Tag = "Consis"; Desc = "Publiczna paczka: role architekt / civil / programista. Python, 7zip, PDF, AI, BIM." },
+        @{ Name = "bootstrap.ps1"; Tag = "Start"; Desc = "One-liner irm | iex. Sciaga ZIP z GitHuba i odpala panel." },
+        @{ Name = "consisai.ps1"; Tag = "URL"; Desc = "Plik pod www.redroad.pl/consisai - irm https://www.redroad.pl/consisai | iex" },
         @{ Name = "srodowisko.json"; Tag = "Zrzut"; Desc = "Aktualny zrzut: winget, pip, npm, rozszerzenia Cursor/VS Code, Docker. Regeneruj zrzut-srodowiska.ps1." },
         @{ Name = "zrzut-srodowiska.ps1"; Tag = "Export"; Desc = "Zbiera biblioteki i dodatki do srodowisko.json + python-requirements.txt." },
         @{ Name = "obraz-systemu.ps1"; Tag = "Obraz"; Desc = "Zloty obraz dysku (wbadmin) na USB/SSD. Za 3 mc: restore + winget upgrade." },
@@ -728,6 +768,15 @@ $cmbProfiles.Add_SelectionChanged({
         Update-OptionsList $chosen
     }
 })
+
+if ($cmbRole) {
+    $cmbRole.Add_SelectionChanged({
+        if ($global:skipRoleChange) { return }
+        if (-not $cmbRole.SelectedItem) { return }
+        $role = @($global:currentProfileData.Roles) | Where-Object { $_.Name -eq $cmbRole.SelectedItem } | Select-Object -First 1
+        Apply-Role $role
+    })
+}
 
 if ($profiles.Count -gt 0) {
     $cmbProfiles.SelectedIndex = 0

@@ -1,0 +1,50 @@
+name: Glos na aplikacje
+description: Program, ktorego uzywasz w biurze projektowym (CAD, BIM, PDF, AI). Nie trzeba umiec kodowac.
+title: "[Aplikacja] "
+labels: ["glos-aplikacja", "spolecznosc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Kliknij **Submit**. Inni glosuja emotka 👍 pod zgloszeniem.
+        Najczesciej glosowane wpadna do `profil_consis.json` jako zalecenia.
+  - type: input
+    id: nazwa
+    attributes:
+      label: Nazwa programu
+      placeholder: np. Revit, IronCAD, GstarCAD, Claude, Cursor
+    validations:
+      required: true
+  - type: dropdown
+    id: kategoria
+    attributes:
+      label: Do czego
+      options:
+        - CAD / BIM (Revit, AutoCAD, IronCAD, GstarCAD)
+        - Civil / drogi / normy
+        - PDF / wydruk / skan
+        - Podpis elektroniczny
+        - AI (Claude, Gemini, Grok, Cursor)
+        - Programowanie / Python
+        - Inne
+    validations:
+      required: true
+  - type: dropdown
+    id: zawód
+    attributes:
+      label: Kim jestes
+      options:
+        - Architekt / BIM
+        - Projektant drogowy / civil
+        - Konstruktor
+        - Ktos kto dopiero wchodzi w AI
+        - Programista w biurze projektowym
+    validations:
+      required: true
+  - type: textarea
+    id: dlaczego
+    attributes:
+      label: Dlaczego warto to miec na stanowisku
+      placeholder: Jedno-dwa zdania. Bez kodu.
+    validations:
+      required: true
