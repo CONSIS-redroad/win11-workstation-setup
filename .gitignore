@@ -1,0 +1,15 @@
+# Raporty z konkretnej maszyny
+raport_stanu_*.json
+
+# Instalatory, obrazy dysku, IDE
+*.exe
+*.msi
+Pakiet_Konfiguracyjny.zip
+WindowsImageBackup/
+winget-export.json
+
+# Lokalne / IDE
+.cursor/
+*.log
+Thumbs.db
+Desktop.ini

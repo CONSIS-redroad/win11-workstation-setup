@@ -1,0 +1,58 @@
+{
+  "ProfileName": "Stanowisko MSI (Projektowanie + kod)",
+  "ProfileDesc": "Dwie niezalezne sekcje: biuro CAD/podpisy oraz stack Git-Python-Docker.",
+  "Sections": [
+    {
+      "Id": "biuro",
+      "Name": "Biuro / projektowanie",
+      "Description": "CAD, normy, podpisy, ploter, OCR dokumentacji",
+      "Winget": [
+        { "Name": "HP Click (wielkoformatowe)", "Id": "HP.HPClick", "Checked": true },
+        { "Name": "Tesseract OCR", "Id": "UB-Mannheim.TesseractOCR", "Checked": true }
+      ],
+      "DirectInstalls": [
+        { "Name": "Podpis GOV", "Url": "https://podpis.gov.pl/app/PodpisGovSetup.exe", "Args": "/S", "Checked": true },
+        { "Name": "Szafir KIR", "Url": "https://www.elektronicznypodpis.pl/gfx/elektronicznypodpis/userfiles/_public/aplikacja_szafir/szafir_instalator.exe", "Args": "/S", "Checked": true },
+        { "Name": "GstarCAD 2022 PL", "Url": "", "LocalFile": "GstarCAD2022_PL_x64.exe", "Args": "/S", "Checked": true }
+      ]
+    },
+    {
+      "Id": "dev",
+      "Name": "Programowanie i AI",
+      "Description": "To, czego brakuje po czystym Windows: Git w PATH, gh, Python, Docker",
+      "Winget": [
+        { "Name": "Git", "Id": "Git.Git", "Checked": true },
+        { "Name": "GitHub CLI (gh)", "Id": "GitHub.cli", "Checked": true },
+        { "Name": "GitHub Desktop", "Id": "GitHub.GitHubDesktop", "Checked": true },
+        { "Name": "Python 3.12", "Id": "Python.Python.3.12", "Checked": true },
+        { "Name": "Docker Desktop", "Id": "Docker.DockerDesktop", "Checked": true },
+        { "Name": "Node.js LTS", "Id": "OpenJS.NodeJS.LTS", "Checked": true },
+        { "Name": "Cursor AI", "Id": "Anysphere.Cursor", "Checked": true },
+        { "Name": "Visual Studio Code", "Id": "Microsoft.VisualStudioCode", "Checked": false },
+        { "Name": "Windows Terminal", "Id": "Microsoft.WindowsTerminal", "Checked": true },
+        { "Name": "LM Studio", "Id": "ElementLabs.LMStudio", "Checked": false }
+      ]
+    },
+    {
+      "Id": "ai-cli",
+      "Name": "AI CLI (agenty)",
+      "Description": "Narzedzia liniowe: Claude Code + ten repo CLI (ai.bat). Modele testuja i uzupelniaja JSON bez GUI.",
+      "Winget": [
+        { "Name": "Claude Code", "Id": "Anthropic.ClaudeCode", "Checked": true }
+      ]
+    },
+    {
+      "Id": "zdalnie",
+      "Name": "Dostep zdalny",
+      "Description": "Pulpit zdalny do stanowiska",
+      "Winget": [
+        { "Name": "Chrome Remote Desktop", "Id": "Google.ChromeRemoteDesktopHost", "Checked": true }
+      ]
+    }
+  ],
+  "SystemTweaks": [
+    { "Name": "Wymus Dark Mode i Long Paths (>260)", "Type": "ThemeAndPaths", "Checked": true },
+    { "Name": "Pokaz ukryte pliki i rozszerzenia", "Type": "ExplorerView", "Checked": true }
+  ],
+  "WinUtilConfig": "ust_2.json"
+}
