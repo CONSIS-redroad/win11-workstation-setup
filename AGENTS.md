@@ -29,7 +29,13 @@ Z katalogu pakietu, bez GUI:
 | `python-requirements.txt` | `pip freeze` |
 | `ust_2.json` | ID WinUtil |
 
-Nie commituj: `*.exe`, `raport_stanu_*.json`, katalogu `.cursor/`, obrazow `wbadmin`.
+Nie commituj: `*.exe`, `raport_stanu_*.json`, katalogu `.cursor/`, obrazow `wbadmin`, `.env`, kluczy API, plikow z haslami/tokenami.
+
+## Prywatnosc (repo publiczne)
+
+- `dump` zapisuje tylko listy pakietow i wersji — **nie** powinien zawierac sekretow. Przed `git add` przeszukaj diff pod katem: `api_key`, `token`, `password`, `ghp_`, `sk-`, sciezki z wrazliwymi plikami.
+- Nie dopisuj do JSON adresow e-mail, numerow telefonow ani danych klientow biura.
+- Profile osobiste w przyszlosci: szyfrowanie haslem / konto Google / prywatne repo — na razie pelny zrzut MSI moze byc w tym repozytorium (jeden maintainer).
 
 ## Typowy przebieg agenta
 

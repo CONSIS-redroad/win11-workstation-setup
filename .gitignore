@@ -8,6 +8,14 @@ Pakiet_Konfiguracyjny.zip
 WindowsImageBackup/
 winget-export.json
 
+# Sekrety i tokeny (nigdy do publicznego gita)
+.env
+.env.*
+*.pem
+*.pfx
+*credentials*.json
+secrets/
+
 # Lokalne / IDE
 .cursor/
 *.log

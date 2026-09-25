@@ -108,6 +108,20 @@ ust_2.json                lista ID WinUtil
 ## Git
 
 Trzymac w repo: skrypty, `profil_*.json`, `srodowisko.json`, `python-requirements.txt`.  
-Nie wrzucac: `*.exe`, `raport_stanu_*.json`, `.cursor/`, same obrazy `wbadmin`.
+Nie wrzucac: `*.exe`, `raport_stanu_*.json`, `.cursor/`, same obrazy `wbadmin`, pliki `.env`, klucze API, hasla, eksporty z tokenami OAuth.
+
+**Co jest w zrzucie:** publiczne ID pakietow (winget, pip, npm, rozszerzenia IDE), wersje, nazwa komputera — **bez** sciezek do profilu uzytkownika, kluczy ani plikow konfiguracyjnych z sekretami. Po `ai.bat dump` warto przed commitem sprawdzic diff; agentowi: `AGENTS.md` (sekcja prywatnosci).
+
+### Prywatnosc profili (stan teraz i plan)
+
+Repo jest **jawne** (spolecznosc + bootstrap `irm`). Pelny zrzut stanowiska MSI (`srodowisko.json`) trafia do gita jako odtwarzalna kopia — na razie z tego korzysta glownie maintainer.
+
+**W przyszlosci** (gdy wiecej osob bedzie trzymac wlasne „przepisy”):
+
+- profile **prywatne** lub **zaszyfrowane haslem** (eksport/import poza publicznym JSON),
+- **powiazanie z kontem Google** (lub innym IdP) — profil w chmurze uzytkownika, nie w publicznym repo,
+- ewentualnie **osobne repo prywatne** na zrzut maszyny, a w publicznym tylko szablony `profil_consis.json` / glosowanie spolecznosci.
+
+Do tego czasu: nie commituj `.env`, tokenow CI, eksportow podpisow kwalifikowanych ani lokalnych `raport_stanu_*.json`.
 
 To nie jest konkurencja dla [WinUtil](https://github.com/ChrisTitusTech/winutil). To **zalecenia polskiego biura projektowego + glos spolecznosci + most do AI**.
