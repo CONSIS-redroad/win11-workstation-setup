@@ -1,0 +1,27 @@
+{
+  "Idea": "Referencyjne zrzuty moich stanowisk (po ai.bat dump i przegladzie diff). Porownanie: ai.bat compare -Machine msi albo py porownaj-maszyny.py maszyny/msi.json maszyny/consis-b2bgdma.json",
+  "Owner": "maintainer",
+  "Machines": [
+    {
+      "id": "msi",
+      "label": "MSI - dom, projekt + kod",
+      "profile": "profil_msi.json",
+      "snapshot": "msi.json",
+      "computerName": "MSI",
+      "role": "Zloty obraz / profil_msi; CAD + dev + ai-cli"
+    },
+    {
+      "id": "consis-b2bgdma",
+      "label": "Consis - biurowy desktop",
+      "profile": "profil_consis.json",
+      "snapshot": "consis-b2bgdma.json",
+      "computerName": "DESKTOP-B2BGDMA",
+      "role": "Pelne stanowisko Consis (role w panelu)"
+    }
+  ],
+  "Refresh": [
+    "Na danej maszynie: ai.bat dump",
+    "Skopiuj srodowisko.json -> maszyny/<snapshot> z manifestu",
+    "ai.bat compare -Machine <id> (lokalny zrzut vs referencja) lub py porownaj-maszyny.py maszyny/a.json maszyny/b.json"
+  ]
+}

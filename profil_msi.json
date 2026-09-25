@@ -23,6 +23,7 @@
       "Winget": [
         { "Name": "Git", "Id": "Git.Git", "Checked": true },
         { "Name": "GitHub CLI (gh)", "Id": "GitHub.cli", "Checked": true },
+        { "Name": "Gitleaks", "Id": "Gitleaks.Gitleaks", "Checked": true },
         { "Name": "GitHub Desktop", "Id": "GitHub.GitHubDesktop", "Checked": true },
         { "Name": "Python 3.12", "Id": "Python.Python.3.12", "Checked": true },
         { "Name": "Docker Desktop", "Id": "Docker.DockerDesktop", "Checked": true },

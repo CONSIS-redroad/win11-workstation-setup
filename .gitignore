@@ -16,6 +16,9 @@ winget-export.json
 *credentials*.json
 secrets/
 
+# Notatki sesji Cursor (nie produkt)
+GROK-PRZEGLAD-SESJA.md
+
 # Lokalne / IDE
 .cursor/
 *.log

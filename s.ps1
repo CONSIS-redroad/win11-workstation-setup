@@ -708,12 +708,21 @@ function Update-FileList {
         @{ Name = "profil_consis.json"; Tag = "Consis"; Desc = "Publiczna paczka: role architekt / civil / programista. Python, 7zip, PDF, AI, BIM." },
         @{ Name = "bootstrap.ps1"; Tag = "Start"; Desc = "One-liner irm | iex. Sciaga ZIP z GitHuba i odpala panel." },
         @{ Name = "consisai.ps1"; Tag = "URL"; Desc = "Plik pod www.redroad.pl/consisai - irm https://www.redroad.pl/consisai | iex" },
-        @{ Name = "srodowisko.json"; Tag = "Zrzut"; Desc = "Aktualny zrzut: winget, pip, npm, rozszerzenia Cursor/VS Code, Docker. Regeneruj zrzut-srodowiska.ps1." },
-        @{ Name = "zrzut-srodowiska.ps1"; Tag = "Export"; Desc = "Zbiera biblioteki i dodatki do srodowisko.json + python-requirements.txt." },
-        @{ Name = "obraz-systemu.ps1"; Tag = "Obraz"; Desc = "Zloty obraz dysku (wbadmin) na USB/SSD. Za 3 mc: restore + winget upgrade." },
+        @{ Name = "srodowisko.json"; Tag = "Zrzut"; Desc = "Aktualny zrzut: winget, pip, npm, ustawienia Cursor/VS Code/Antigravity, Docker. Regeneruj zrzut-srodowiska.ps1." },
+        @{ Name = "mod-zrzut-dev.ps1"; Tag = "Zrzut"; Desc = "Modul pip + settings.json Cursor/VS Code/Antigravity. Sekrety wycinane. Uzywany przez dump i scan." },
+        @{ Name = "zrzut-srodowiska.ps1"; Tag = "Export"; Desc = "Zbiera biblioteki, ustawienia IDE i dodatki do srodowisko.json + python-requirements.txt." },
+        @{ Name = "obraz-panel/start.bat"; Tag = "Obraz"; Desc = "Osobne menu: backup C:, wybor nosnika, pasek postepu, wersje do restore." },
+        @{ Name = "obraz-systemu.ps1"; Tag = "Obraz"; Desc = "CLI backup (wbadmin) bez GUI. Runbook: OBRAZ-DYSKU.md." },
+        @{ Name = "OBRAZ-DYSKU.md"; Tag = "Obraz"; Desc = "Backup i restore obrazu + co po wczytaniu. ai.bat image-check = dyski/Admin." },
         @{ Name = "skanuj.ps1"; Tag = "Audyt"; Desc = "Pre-flight: AppX, uslugi, tweaki rejestru, programy z Uninstall." },
         @{ Name = "link-install.ps1"; Tag = "Link"; Desc = "Zamiana URL ze strony na cichy winget albo EXE/MSI. Uzywane przez zakladke Z linku i ai.bat add-url." },
-        @{ Name = "cli.ps1"; Tag = "AI CLI"; Desc = "JSON CLI dla agentow: test, dump, diff, fill, add-winget, add-url. Wejscie: ai.bat." },
+        @{ Name = "cli.ps1"; Tag = "AI CLI"; Desc = "JSON CLI dla agentow: test, dump, diff, compare, fill, add-winget, add-url. Wejscie: ai.bat." },
+        @{ Name = "porownaj-maszyny.py"; Tag = "AI CLI"; Desc = "Porownanie zrzutow + raport.dependencyGaps (ryzyko brakujacych bibliotek)." },
+        @{ Name = "aktualizuj-pip.py"; Tag = "AI CLI"; Desc = "Plan/apply pip wzgledem referencji. ai.bat pip-sync -Machine ... [-Apply]." },
+        @{ Name = "maszyny/manifest.json"; Tag = "Flota"; Desc = "Moje maszyny: id, profil, plik zrzutu. ai.bat machines | compare-fleet." },
+        @{ Name = "AGENTS-analityk.md"; Tag = "AI"; Desc = "Watek agenta: compare, dependencyGaps, diff — bez instalacji." },
+        @{ Name = "AGENTS-instalator.md"; Tag = "AI"; Desc = "Watek agenta: fill, pip-sync, upgrade — po WhatIf/planie." },
+        @{ Name = "AGENTS-audytor.md"; Tag = "AI"; Desc = "Watek agenta: test, validate, scan." },
         @{ Name = "ai.bat"; Tag = "AI CLI"; Desc = "Launcher CLI bez UAC/GUI. .\ai.bat test" },
         @{ Name = "AGENTS.md"; Tag = "AI"; Desc = "Instrukcja dla Cursor/Claude: jak testowac i uzupelniac JSON." },
         @{ Name = "ui.xaml"; Tag = "UI"; Desc = "Interfejs Fluent (Stitch) ladowany przez s.ps1." },
@@ -950,9 +959,15 @@ if ($btnDumpEnv) {
 }
 if ($btnSystemImage) {
     $btnSystemImage.Add_Click({
+        $bat = Join-Path $scriptDir "obraz-panel\start.bat"
+        if (Test-Path $bat) {
+            Write-UiLog "Otwieram panel obrazu dysku (backup / przywracanie)." "Cyan"
+            Start-Process $bat
+            return
+        }
         $f = Join-Path $scriptDir "obraz-systemu.ps1"
-        if (-not (Test-Path $f)) { Write-UiLog "Brak obraz-systemu.ps1" "Red"; return }
-        Write-UiLog "Otwieram kreator obrazu dysku (potrzebny drugi dysk, nie C:)." "Cyan"
+        if (-not (Test-Path $f)) { Write-UiLog "Brak obraz-panel i obraz-systemu.ps1" "Red"; return }
+        Write-UiLog "Otwieram obraz-systemu.ps1 (CLI)." "Cyan"
         Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$f`""
     })
 }

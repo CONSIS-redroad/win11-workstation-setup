@@ -1,0 +1,1377 @@
+﻿{
+    "Idea":  "To jest kopia srodowiska w JSON. AI i czlowiek poprawiaja ten plik (albo profil_*.json) zamiast klikac instalatory. Po wczytaniu obrazu dysku: winget upgrade --all oraz pip install -r python-requirements.txt.",
+    "CapturedAt":  "2026-09-25 20:14:20",
+    "ComputerName":  "MSI",
+    "OS":  "Microsoft Windows 11 Home",
+    "Winget":  [
+                   {
+                       "Name":  "7zip.7zip",
+                       "Id":  "7zip.7zip",
+                       "Version":  "24.09",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Git.Git",
+                       "Id":  "Git.Git",
+                       "Version":  "2.52.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "TeamViewer.TeamViewer",
+                       "Id":  "TeamViewer.TeamViewer",
+                       "Version":  "15.81.5",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Superace.UPDF",
+                       "Id":  "Superace.UPDF",
+                       "Version":  "Unknown",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "MiniTool.PartitionWizard.Free",
+                       "Id":  "MiniTool.PartitionWizard.Free",
+                       "Version":  "13.5",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.VCRedist.2010.x64",
+                       "Id":  "Microsoft.VCRedist.2010.x64",
+                       "Version":  "10.0.40219",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "TheDocumentFoundation.LibreOffice",
+                       "Id":  "TheDocumentFoundation.LibreOffice",
+                       "Version":  "25.8.1.1",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Google.EarthPro",
+                       "Id":  "Google.EarthPro",
+                       "Version":  "7.3.7.1327",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "OpenJS.NodeJS.LTS",
+                       "Id":  "OpenJS.NodeJS.LTS",
+                       "Version":  "24.14.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "CryptoTech.CryptoCardSuite",
+                       "Id":  "CryptoTech.CryptoCardSuite",
+                       "Version":  "4.2.1.89",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Google.GoogleDrive",
+                       "Id":  "Google.GoogleDrive",
+                       "Version":  "131.0.2.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "geeksoftwareGmbH.PDF24Creator",
+                       "Id":  "geeksoftwareGmbH.PDF24Creator",
+                       "Version":  "11.26.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Anysphere.Cursor",
+                       "Id":  "Anysphere.Cursor",
+                       "Version":  "3.22.7",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "ACS.UnifiedPCSCDriver",
+                       "Id":  "ACS.UnifiedPCSCDriver",
+                       "Version":  "4.4.2.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "BandicamCompany.BandicamMPEG-1Decoder",
+                       "Id":  "BandicamCompany.BandicamMPEG-1Decoder",
+                       "Version":  "1.2",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "BandicamCompany.Bandicam",
+                       "Id":  "BandicamCompany.Bandicam",
+                       "Version":  "8.1.0.2516",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Foxit.FoxitReader.Inno",
+                       "Id":  "Foxit.FoxitReader.Inno",
+                       "Version":  "2025.1.0.27937",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.Edge",
+                       "Id":  "Microsoft.Edge",
+                       "Version":  "153.0.4234.48",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.VCRedist.2012.x86",
+                       "Id":  "Microsoft.VCRedist.2012.x86",
+                       "Version":  "11.0.61030.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.VCRedist.2015+.x86",
+                       "Id":  "Microsoft.VCRedist.2015+.x86",
+                       "Version":  "14.36.32532.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Python.Launcher",
+                       "Id":  "Python.Launcher",
+                       "Version":  "3.13.1",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.VCRedist.2015+.x64",
+                       "Id":  "Microsoft.VCRedist.2015+.x64",
+                       "Version":  "14.50.35719.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Google.ChromeRemoteDesktopHost",
+                       "Id":  "Google.ChromeRemoteDesktopHost",
+                       "Version":  "154.0.8037.40",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "MarekJasinski.FreeCommanderXE",
+                       "Id":  "MarekJasinski.FreeCommanderXE",
+                       "Version":  "2025.0.0.921",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.VCRedist.2010.x86",
+                       "Id":  "Microsoft.VCRedist.2010.x86",
+                       "Version":  "10.0.40219",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.DotNet.DesktopRuntime.8",
+                       "Id":  "Microsoft.DotNet.DesktopRuntime.8",
+                       "Version":  "8.0.12",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.VCRedist.2012.x64",
+                       "Id":  "Microsoft.VCRedist.2012.x64",
+                       "Version":  "11.0.61030.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Google.Antigravity",
+                       "Id":  "Google.Antigravity",
+                       "Version":  "2.17.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Asana.Asana",
+                       "Id":  "Asana.Asana",
+                       "Version":  "2.4.1",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "ByteDance.CapCut",
+                       "Id":  "ByteDance.CapCut",
+                       "Version":  "8.9.1.3802",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "GitHub.GitHubDesktop",
+                       "Id":  "GitHub.GitHubDesktop",
+                       "Version":  "3.5.2",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Google.PlatformTools",
+                       "Id":  "Google.PlatformTools",
+                       "Version":  "37.0.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Opera.Opera",
+                       "Id":  "Opera.Opera",
+                       "Version":  "135.0.5973.92",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "ElementLabs.LMStudio",
+                       "Id":  "ElementLabs.LMStudio",
+                       "Version":  "0.4.8+1",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "HP.HPClick",
+                       "Id":  "HP.HPClick",
+                       "Version":  "4.10.38",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Python.Python.3.13",
+                       "Id":  "Python.Python.3.13",
+                       "Version":  "3.13.1",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Google.AntigravityIDE",
+                       "Id":  "Google.AntigravityIDE",
+                       "Version":  "2.5.5",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Python.Python.3.12",
+                       "Id":  "Python.Python.3.12",
+                       "Version":  "3.12.7",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Anthropic.Claude",
+                       "Id":  "Anthropic.Claude",
+                       "Version":  "2.9939.2.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.Teams",
+                       "Id":  "Microsoft.Teams",
+                       "Version":  "26225.1806.5074.1452",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.OpenCLGLVulkanCompatibilityPack",
+                       "Id":  "Microsoft.OpenCLGLVulkanCompatibilityPack",
+                       "Version":  "1.2608.3.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.AppInstaller",
+                       "Id":  "Microsoft.AppInstaller",
+                       "Version":  "1.29.380.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.DirectX",
+                       "Id":  "Microsoft.DirectX",
+                       "Version":  "9.29.1974.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.DotNet.Native.Runtime",
+                       "Id":  "Microsoft.DotNet.Native.Runtime",
+                       "Version":  "2.2.28604.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.UI.Xaml.2.7",
+                       "Id":  "Microsoft.UI.Xaml.2.7",
+                       "Version":  "7.2409.9001.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.UI.Xaml.2.8",
+                       "Id":  "Microsoft.UI.Xaml.2.8",
+                       "Version":  "8.2511.26001.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.VCLibs.Desktop.14",
+                       "Id":  "Microsoft.VCLibs.Desktop.14",
+                       "Version":  "14.0.33728.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.VCLibs.14",
+                       "Id":  "Microsoft.VCLibs.14",
+                       "Version":  "14.0.33519.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.WindowsAppRuntime.1.4",
+                       "Id":  "Microsoft.WindowsAppRuntime.1.4",
+                       "Version":  "1.4.7",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.WindowsAppRuntime.1.5",
+                       "Id":  "Microsoft.WindowsAppRuntime.1.5",
+                       "Version":  "1.5.9",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.WindowsAppRuntime.1.6",
+                       "Id":  "Microsoft.WindowsAppRuntime.1.6",
+                       "Version":  "1.6.9",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.WindowsAppRuntime.1.7",
+                       "Id":  "Microsoft.WindowsAppRuntime.1.7",
+                       "Version":  "1.7.9",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.WindowsAppRuntime.1.8",
+                       "Id":  "Microsoft.WindowsAppRuntime.1.8",
+                       "Version":  "\u003e 1.8.10",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.WindowsAppRuntime.2",
+                       "Id":  "Microsoft.WindowsAppRuntime.2",
+                       "Version":  "2.5.1.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.WindowsTerminal",
+                       "Id":  "Microsoft.WindowsTerminal",
+                       "Version":  "1.24.11911.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "Microsoft.WSL",
+                       "Id":  "Microsoft.WSL",
+                       "Version":  "2.6.3.0",
+                       "Checked":  true
+                   },
+                   {
+                       "Name":  "XP9KHM4BK9FZ7Q",
+                       "Id":  "XP9KHM4BK9FZ7Q",
+                       "Version":  "1.139.0",
+                       "Checked":  true
+                   }
+               ],
+    "PythonPackages":  [
+                           {
+                               "Name":  "aiofile",
+                               "Version":  "3.9.0"
+                           },
+                           {
+                               "Name":  "aiohappyeyeballs",
+                               "Version":  "2.4.4"
+                           },
+                           {
+                               "Name":  "aiohttp",
+                               "Version":  "3.11.11"
+                           },
+                           {
+                               "Name":  "aiosignal",
+                               "Version":  "1.3.2"
+                           },
+                           {
+                               "Name":  "altgraph",
+                               "Version":  "0.17.4"
+                           },
+                           {
+                               "Name":  "annotated-doc",
+                               "Version":  "0.0.4"
+                           },
+                           {
+                               "Name":  "annotated-types",
+                               "Version":  "0.7.0"
+                           },
+                           {
+                               "Name":  "anyio",
+                               "Version":  "4.8.0"
+                           },
+                           {
+                               "Name":  "attrs",
+                               "Version":  "24.3.0"
+                           },
+                           {
+                               "Name":  "Authlib",
+                               "Version":  "1.6.9"
+                           },
+                           {
+                               "Name":  "babel",
+                               "Version":  "2.18.0"
+                           },
+                           {
+                               "Name":  "bcrypt",
+                               "Version":  "5.0.0"
+                           },
+                           {
+                               "Name":  "beartype",
+                               "Version":  "0.22.9"
+                           },
+                           {
+                               "Name":  "beautifulsoup4",
+                               "Version":  "4.13.4"
+                           },
+                           {
+                               "Name":  "build",
+                               "Version":  "1.4.0"
+                           },
+                           {
+                               "Name":  "cachetools",
+                               "Version":  "7.0.5"
+                           },
+                           {
+                               "Name":  "caio",
+                               "Version":  "0.9.25"
+                           },
+                           {
+                               "Name":  "certifi",
+                               "Version":  "2024.12.14"
+                           },
+                           {
+                               "Name":  "cffi",
+                               "Version":  "2.0.0"
+                           },
+                           {
+                               "Name":  "chardet",
+                               "Version":  "5.2.0"
+                           },
+                           {
+                               "Name":  "charset-normalizer",
+                               "Version":  "3.4.1"
+                           },
+                           {
+                               "Name":  "chromadb",
+                               "Version":  "1.5.5"
+                           },
+                           {
+                               "Name":  "click",
+                               "Version":  "8.3.1"
+                           },
+                           {
+                               "Name":  "click-default-group",
+                               "Version":  "1.2.4"
+                           },
+                           {
+                               "Name":  "colorama",
+                               "Version":  "0.4.6"
+                           },
+                           {
+                               "Name":  "comtypes",
+                               "Version":  "1.4.10"
+                           },
+                           {
+                               "Name":  "cryptography",
+                               "Version":  "46.0.5"
+                           },
+                           {
+                               "Name":  "customtkinter",
+                               "Version":  "5.2.2"
+                           },
+                           {
+                               "Name":  "cyclopts",
+                               "Version":  "4.10.2"
+                           },
+                           {
+                               "Name":  "darkdetect",
+                               "Version":  "0.8.0"
+                           },
+                           {
+                               "Name":  "deepdiff",
+                               "Version":  "8.4.2"
+                           },
+                           {
+                               "Name":  "defusedxml",
+                               "Version":  "0.7.1"
+                           },
+                           {
+                               "Name":  "Deprecated",
+                               "Version":  "1.2.15"
+                           },
+                           {
+                               "Name":  "distro",
+                               "Version":  "1.9.0"
+                           },
+                           {
+                               "Name":  "dnspython",
+                               "Version":  "2.7.0"
+                           },
+                           {
+                               "Name":  "docstring_parser",
+                               "Version":  "0.17.0"
+                           },
+                           {
+                               "Name":  "docutils",
+                               "Version":  "0.22.4"
+                           },
+                           {
+                               "Name":  "docx2pdf",
+                               "Version":  "0.1.8"
+                           },
+                           {
+                               "Name":  "docxcompose",
+                               "Version":  "2.1.0"
+                           },
+                           {
+                               "Name":  "durationpy",
+                               "Version":  "0.10"
+                           },
+                           {
+                               "Name":  "email-validator",
+                               "Version":  "2.3.0"
+                           },
+                           {
+                               "Name":  "et_xmlfile",
+                               "Version":  "2.0.0"
+                           },
+                           {
+                               "Name":  "exceptiongroup",
+                               "Version":  "1.3.1"
+                           },
+                           {
+                               "Name":  "ezdxf",
+                               "Version":  "1.4.0"
+                           },
+                           {
+                               "Name":  "fastmcp",
+                               "Version":  "3.2.2"
+                           },
+                           {
+                               "Name":  "filelock",
+                               "Version":  "3.25.2"
+                           },
+                           {
+                               "Name":  "flatbuffers",
+                               "Version":  "25.12.19"
+                           },
+                           {
+                               "Name":  "fonttools",
+                               "Version":  "4.56.0"
+                           },
+                           {
+                               "Name":  "frozenlist",
+                               "Version":  "1.5.0"
+                           },
+                           {
+                               "Name":  "fsspec",
+                               "Version":  "2026.2.0"
+                           },
+                           {
+                               "Name":  "geckodriver",
+                               "Version":  "0.0.1"
+                           },
+                           {
+                               "Name":  "google-api-core",
+                               "Version":  "2.30.0"
+                           },
+                           {
+                               "Name":  "google-api-python-client",
+                               "Version":  "2.193.0"
+                           },
+                           {
+                               "Name":  "google-auth",
+                               "Version":  "2.49.1"
+                           },
+                           {
+                               "Name":  "google-auth-httplib2",
+                               "Version":  "0.3.0"
+                           },
+                           {
+                               "Name":  "google-auth-oauthlib",
+                               "Version":  "1.3.0"
+                           },
+                           {
+                               "Name":  "googleapis-common-protos",
+                               "Version":  "1.73.0"
+                           },
+                           {
+                               "Name":  "greenlet",
+                               "Version":  "3.1.1"
+                           },
+                           {
+                               "Name":  "grpcio",
+                               "Version":  "1.78.0"
+                           },
+                           {
+                               "Name":  "h11",
+                               "Version":  "0.14.0"
+                           },
+                           {
+                               "Name":  "hf-xet",
+                               "Version":  "1.4.2"
+                           },
+                           {
+                               "Name":  "httpcore",
+                               "Version":  "1.0.7"
+                           },
+                           {
+                               "Name":  "httplib2",
+                               "Version":  "0.31.2"
+                           },
+                           {
+                               "Name":  "httptools",
+                               "Version":  "0.7.1"
+                           },
+                           {
+                               "Name":  "httpx",
+                               "Version":  "0.28.1"
+                           },
+                           {
+                               "Name":  "httpx-sse",
+                               "Version":  "0.4.3"
+                           },
+                           {
+                               "Name":  "huggingface_hub",
+                               "Version":  "1.7.2"
+                           },
+                           {
+                               "Name":  "idna",
+                               "Version":  "3.10"
+                           },
+                           {
+                               "Name":  "imageio",
+                               "Version":  "2.37.0"
+                           },
+                           {
+                               "Name":  "importlib_metadata",
+                               "Version":  "8.7.1"
+                           },
+                           {
+                               "Name":  "importlib_resources",
+                               "Version":  "6.5.2"
+                           },
+                           {
+                               "Name":  "jaraco.classes",
+                               "Version":  "3.4.0"
+                           },
+                           {
+                               "Name":  "jaraco.context",
+                               "Version":  "6.1.2"
+                           },
+                           {
+                               "Name":  "jaraco.functools",
+                               "Version":  "4.4.0"
+                           },
+                           {
+                               "Name":  "Jinja2",
+                               "Version":  "3.1.6"
+                           },
+                           {
+                               "Name":  "jiter",
+                               "Version":  "0.8.2"
+                           },
+                           {
+                               "Name":  "joblib",
+                               "Version":  "1.5.3"
+                           },
+                           {
+                               "Name":  "jsonref",
+                               "Version":  "1.1.0"
+                           },
+                           {
+                               "Name":  "jsonschema",
+                               "Version":  "4.23.0"
+                           },
+                           {
+                               "Name":  "jsonschema-path",
+                               "Version":  "0.4.5"
+                           },
+                           {
+                               "Name":  "jsonschema-specifications",
+                               "Version":  "2024.10.1"
+                           },
+                           {
+                               "Name":  "keyring",
+                               "Version":  "25.7.0"
+                           },
+                           {
+                               "Name":  "kubernetes",
+                               "Version":  "35.0.0"
+                           },
+                           {
+                               "Name":  "lazy_loader",
+                               "Version":  "0.4"
+                           },
+                           {
+                               "Name":  "loguru",
+                               "Version":  "0.7.3"
+                           },
+                           {
+                               "Name":  "lxml",
+                               "Version":  "5.3.0"
+                           },
+                           {
+                               "Name":  "markdown-it-py",
+                               "Version":  "4.0.0"
+                           },
+                           {
+                               "Name":  "MarkupSafe",
+                               "Version":  "3.0.3"
+                           },
+                           {
+                               "Name":  "mcp",
+                               "Version":  "1.27.0"
+                           },
+                           {
+                               "Name":  "mdurl",
+                               "Version":  "0.1.2"
+                           },
+                           {
+                               "Name":  "mmh3",
+                               "Version":  "5.2.1"
+                           },
+                           {
+                               "Name":  "more-itertools",
+                               "Version":  "11.0.2"
+                           },
+                           {
+                               "Name":  "mpmath",
+                               "Version":  "1.3.0"
+                           },
+                           {
+                               "Name":  "multidict",
+                               "Version":  "6.1.0"
+                           },
+                           {
+                               "Name":  "networkx",
+                               "Version":  "3.4.2"
+                           },
+                           {
+                               "Name":  "numpy",
+                               "Version":  "2.2.2"
+                           },
+                           {
+                               "Name":  "oauthlib",
+                               "Version":  "3.3.1"
+                           },
+                           {
+                               "Name":  "odfpy",
+                               "Version":  "1.4.1"
+                           },
+                           {
+                               "Name":  "onnxruntime",
+                               "Version":  "1.24.4"
+                           },
+                           {
+                               "Name":  "openai",
+                               "Version":  "1.60.0"
+                           },
+                           {
+                               "Name":  "openapi-pydantic",
+                               "Version":  "0.5.1"
+                           },
+                           {
+                               "Name":  "opencv-python",
+                               "Version":  "4.11.0.86"
+                           },
+                           {
+                               "Name":  "openpyxl",
+                               "Version":  "3.1.5"
+                           },
+                           {
+                               "Name":  "opentelemetry-api",
+                               "Version":  "1.40.0"
+                           },
+                           {
+                               "Name":  "opentelemetry-exporter-otlp-proto-common",
+                               "Version":  "1.40.0"
+                           },
+                           {
+                               "Name":  "opentelemetry-exporter-otlp-proto-grpc",
+                               "Version":  "1.40.0"
+                           },
+                           {
+                               "Name":  "opentelemetry-proto",
+                               "Version":  "1.40.0"
+                           },
+                           {
+                               "Name":  "opentelemetry-sdk",
+                               "Version":  "1.40.0"
+                           },
+                           {
+                               "Name":  "opentelemetry-semantic-conventions",
+                               "Version":  "0.61b0"
+                           },
+                           {
+                               "Name":  "orderly-set",
+                               "Version":  "5.4.0"
+                           },
+                           {
+                               "Name":  "orjson",
+                               "Version":  "3.11.7"
+                           },
+                           {
+                               "Name":  "outcome",
+                               "Version":  "1.3.0.post0"
+                           },
+                           {
+                               "Name":  "overrides",
+                               "Version":  "7.7.0"
+                           },
+                           {
+                               "Name":  "packaging",
+                               "Version":  "24.2"
+                           },
+                           {
+                               "Name":  "pandas",
+                               "Version":  "2.2.3"
+                           },
+                           {
+                               "Name":  "pathable",
+                               "Version":  "0.5.0"
+                           },
+                           {
+                               "Name":  "pdfkit",
+                               "Version":  "1.0.0"
+                           },
+                           {
+                               "Name":  "pdfminer.six",
+                               "Version":  "20251230"
+                           },
+                           {
+                               "Name":  "pdfplumber",
+                               "Version":  "0.11.9"
+                           },
+                           {
+                               "Name":  "pefile",
+                               "Version":  "2023.2.7"
+                           },
+                           {
+                               "Name":  "pikepdf",
+                               "Version":  "9.5.1"
+                           },
+                           {
+                               "Name":  "pillow",
+                               "Version":  "11.1.0"
+                           },
+                           {
+                               "Name":  "platformdirs",
+                               "Version":  "4.9.6"
+                           },
+                           {
+                               "Name":  "pluggy",
+                               "Version":  "1.5.0"
+                           },
+                           {
+                               "Name":  "propcache",
+                               "Version":  "0.2.1"
+                           },
+                           {
+                               "Name":  "proto-plus",
+                               "Version":  "1.27.1"
+                           },
+                           {
+                               "Name":  "protobuf",
+                               "Version":  "6.33.6"
+                           },
+                           {
+                               "Name":  "psutil",
+                               "Version":  "6.1.1"
+                           },
+                           {
+                               "Name":  "pwinput",
+                               "Version":  "1.0.3"
+                           },
+                           {
+                               "Name":  "py-key-value-aio",
+                               "Version":  "0.4.4"
+                           },
+                           {
+                               "Name":  "pyasn1",
+                               "Version":  "0.6.3"
+                           },
+                           {
+                               "Name":  "pyasn1_modules",
+                               "Version":  "0.4.2"
+                           },
+                           {
+                               "Name":  "pyautocad",
+                               "Version":  "0.2.0"
+                           },
+                           {
+                               "Name":  "pybase64",
+                               "Version":  "1.4.3"
+                           },
+                           {
+                               "Name":  "pycparser",
+                               "Version":  "2.22"
+                           },
+                           {
+                               "Name":  "pydantic",
+                               "Version":  "2.12.5"
+                           },
+                           {
+                               "Name":  "pydantic-settings",
+                               "Version":  "2.13.1"
+                           },
+                           {
+                               "Name":  "pydantic_core",
+                               "Version":  "2.41.5"
+                           },
+                           {
+                               "Name":  "PyGetWindow",
+                               "Version":  "0.0.9"
+                           },
+                           {
+                               "Name":  "Pygments",
+                               "Version":  "2.19.2"
+                           },
+                           {
+                               "Name":  "pyinstaller",
+                               "Version":  "6.11.1"
+                           },
+                           {
+                               "Name":  "pyinstaller-hooks-contrib",
+                               "Version":  "2025.1"
+                           },
+                           {
+                               "Name":  "PyJWT",
+                               "Version":  "2.12.1"
+                           },
+                           {
+                               "Name":  "pymongo",
+                               "Version":  "4.10.1"
+                           },
+                           {
+                               "Name":  "PyMuPDF",
+                               "Version":  "1.25.2"
+                           },
+                           {
+                               "Name":  "pyparsing",
+                               "Version":  "3.2.3"
+                           },
+                           {
+                               "Name":  "pypdf",
+                               "Version":  "6.9.1"
+                           },
+                           {
+                               "Name":  "PyPDF2",
+                               "Version":  "3.0.1"
+                           },
+                           {
+                               "Name":  "pypdfium2",
+                               "Version":  "5.6.0"
+                           },
+                           {
+                               "Name":  "pyperclip",
+                               "Version":  "1.11.0"
+                           },
+                           {
+                               "Name":  "PyPika",
+                               "Version":  "0.51.1"
+                           },
+                           {
+                               "Name":  "pyproj",
+                               "Version":  "3.7.1"
+                           },
+                           {
+                               "Name":  "pyproject_hooks",
+                               "Version":  "1.2.0"
+                           },
+                           {
+                               "Name":  "PyQt5",
+                               "Version":  "5.15.11"
+                           },
+                           {
+                               "Name":  "PyQt5-Qt5",
+                               "Version":  "5.15.2"
+                           },
+                           {
+                               "Name":  "PyQt5_sip",
+                               "Version":  "12.16.1"
+                           },
+                           {
+                               "Name":  "PyQt6",
+                               "Version":  "6.11.0"
+                           },
+                           {
+                               "Name":  "PyQt6-Qt6",
+                               "Version":  "6.11.1"
+                           },
+                           {
+                               "Name":  "PyQt6_sip",
+                               "Version":  "13.12.0"
+                           },
+                           {
+                               "Name":  "PyRect",
+                               "Version":  "0.2.0"
+                           },
+                           {
+                               "Name":  "PySocks",
+                               "Version":  "1.7.1"
+                           },
+                           {
+                               "Name":  "pytesseract",
+                               "Version":  "0.3.13"
+                           },
+                           {
+                               "Name":  "python-dateutil",
+                               "Version":  "2.9.0.post0"
+                           },
+                           {
+                               "Name":  "python-docx",
+                               "Version":  "1.1.2"
+                           },
+                           {
+                               "Name":  "python-dotenv",
+                               "Version":  "1.2.2"
+                           },
+                           {
+                               "Name":  "python-multipart",
+                               "Version":  "0.0.24"
+                           },
+                           {
+                               "Name":  "pytz",
+                               "Version":  "2024.2"
+                           },
+                           {
+                               "Name":  "pywin32",
+                               "Version":  "310"
+                           },
+                           {
+                               "Name":  "pywin32-ctypes",
+                               "Version":  "0.2.3"
+                           },
+                           {
+                               "Name":  "PyYAML",
+                               "Version":  "6.0.2"
+                           },
+                           {
+                               "Name":  "RapidFuzz",
+                               "Version":  "3.11.0"
+                           },
+                           {
+                               "Name":  "rarfile",
+                               "Version":  "4.2"
+                           },
+                           {
+                               "Name":  "referencing",
+                               "Version":  "0.36.1"
+                           },
+                           {
+                               "Name":  "regex",
+                               "Version":  "2026.2.28"
+                           },
+                           {
+                               "Name":  "reportlab",
+                               "Version":  "4.2.5"
+                           },
+                           {
+                               "Name":  "requests",
+                               "Version":  "2.32.3"
+                           },
+                           {
+                               "Name":  "requests-oauthlib",
+                               "Version":  "2.0.0"
+                           },
+                           {
+                               "Name":  "rich",
+                               "Version":  "14.3.3"
+                           },
+                           {
+                               "Name":  "rich-rst",
+                               "Version":  "1.3.2"
+                           },
+                           {
+                               "Name":  "rpds-py",
+                               "Version":  "0.22.3"
+                           },
+                           {
+                               "Name":  "safetensors",
+                               "Version":  "0.7.0"
+                           },
+                           {
+                               "Name":  "schedule",
+                               "Version":  "1.2.2"
+                           },
+                           {
+                               "Name":  "scikit-image",
+                               "Version":  "0.25.0"
+                           },
+                           {
+                               "Name":  "scikit-learn",
+                               "Version":  "1.8.0"
+                           },
+                           {
+                               "Name":  "scipy",
+                               "Version":  "1.15.1"
+                           },
+                           {
+                               "Name":  "selenium",
+                               "Version":  "4.31.0"
+                           },
+                           {
+                               "Name":  "sentence-transformers",
+                               "Version":  "5.3.0"
+                           },
+                           {
+                               "Name":  "setuptools",
+                               "Version":  "75.8.0"
+                           },
+                           {
+                               "Name":  "shellingham",
+                               "Version":  "1.5.4"
+                           },
+                           {
+                               "Name":  "six",
+                               "Version":  "1.17.0"
+                           },
+                           {
+                               "Name":  "sniffio",
+                               "Version":  "1.3.1"
+                           },
+                           {
+                               "Name":  "sortedcontainers",
+                               "Version":  "2.4.0"
+                           },
+                           {
+                               "Name":  "soupsieve",
+                               "Version":  "2.7"
+                           },
+                           {
+                               "Name":  "SQLAlchemy",
+                               "Version":  "2.0.37"
+                           },
+                           {
+                               "Name":  "sqlite-fts4",
+                               "Version":  "1.0.3"
+                           },
+                           {
+                               "Name":  "sqlite-utils",
+                               "Version":  "3.38"
+                           },
+                           {
+                               "Name":  "sse-starlette",
+                               "Version":  "3.3.4"
+                           },
+                           {
+                               "Name":  "starlette",
+                               "Version":  "1.0.0"
+                           },
+                           {
+                               "Name":  "sympy",
+                               "Version":  "1.14.0"
+                           },
+                           {
+                               "Name":  "tabulate",
+                               "Version":  "0.9.0"
+                           },
+                           {
+                               "Name":  "tenacity",
+                               "Version":  "9.1.4"
+                           },
+                           {
+                               "Name":  "threadpoolctl",
+                               "Version":  "3.6.0"
+                           },
+                           {
+                               "Name":  "tifffile",
+                               "Version":  "2025.1.10"
+                           },
+                           {
+                               "Name":  "tk",
+                               "Version":  "0.1.0"
+                           },
+                           {
+                               "Name":  "tkinterdnd2",
+                               "Version":  "0.4.3"
+                           },
+                           {
+                               "Name":  "tokenizers",
+                               "Version":  "0.22.2"
+                           },
+                           {
+                               "Name":  "torch",
+                               "Version":  "2.10.0"
+                           },
+                           {
+                               "Name":  "tqdm",
+                               "Version":  "4.67.1"
+                           },
+                           {
+                               "Name":  "transformers",
+                               "Version":  "5.3.0"
+                           },
+                           {
+                               "Name":  "trio",
+                               "Version":  "0.30.0"
+                           },
+                           {
+                               "Name":  "trio-websocket",
+                               "Version":  "0.12.2"
+                           },
+                           {
+                               "Name":  "typer",
+                               "Version":  "0.24.1"
+                           },
+                           {
+                               "Name":  "typing-inspection",
+                               "Version":  "0.4.2"
+                           },
+                           {
+                               "Name":  "typing_extensions",
+                               "Version":  "4.15.0"
+                           },
+                           {
+                               "Name":  "tzdata",
+                               "Version":  "2025.1"
+                           },
+                           {
+                               "Name":  "uncalled-for",
+                               "Version":  "0.3.1"
+                           },
+                           {
+                               "Name":  "uritemplate",
+                               "Version":  "4.2.0"
+                           },
+                           {
+                               "Name":  "urllib3",
+                               "Version":  "2.3.0"
+                           },
+                           {
+                               "Name":  "uvicorn",
+                               "Version":  "0.42.0"
+                           },
+                           {
+                               "Name":  "watchdog",
+                               "Version":  "6.0.0"
+                           },
+                           {
+                               "Name":  "watchfiles",
+                               "Version":  "1.1.1"
+                           },
+                           {
+                               "Name":  "websocket-client",
+                               "Version":  "1.8.0"
+                           },
+                           {
+                               "Name":  "websockets",
+                               "Version":  "16.0"
+                           },
+                           {
+                               "Name":  "win32_setctime",
+                               "Version":  "1.2.0"
+                           },
+                           {
+                               "Name":  "wrapt",
+                               "Version":  "1.17.2"
+                           },
+                           {
+                               "Name":  "wsproto",
+                               "Version":  "1.2.0"
+                           },
+                           {
+                               "Name":  "xlrd",
+                               "Version":  "2.0.1"
+                           },
+                           {
+                               "Name":  "yarl",
+                               "Version":  "1.18.3"
+                           },
+                           {
+                               "Name":  "zipp",
+                               "Version":  "3.23.0"
+                           },
+                           {
+                               "Name":  "zstandard",
+                               "Version":  "0.23.0"
+                           }
+                       ],
+    "PythonRequirements":  "python-requirements.txt",
+    "NpmGlobal":  [
+                      {
+                          "Name":  "@anthropic-ai/claude-code",
+                          "Version":  "2.1.276"
+                      },
+                      {
+                          "Name":  "@byteplus/ark-cli",
+                          "Version":  "1.0.31"
+                      },
+                      {
+                          "Name":  "@google/gemini-cli",
+                          "Version":  "0.57.0"
+                      }
+                  ],
+    "CursorExtensions":  [
+                             {
+                                 "Id":  "anysphere.cursorpyright",
+                                 "Version":  "1.0.12"
+                             },
+                             {
+                                 "Id":  "anysphere.remote-ssh",
+                                 "Version":  "1.1.16"
+                             },
+                             {
+                                 "Id":  "anysphere.remote-wsl",
+                                 "Version":  "1.0.13"
+                             },
+                             {
+                                 "Id":  "github.vscode-pull-request-github",
+                                 "Version":  "0.156.0"
+                             },
+                             {
+                                 "Id":  "ms-python.debugpy",
+                                 "Version":  "2026.6.0"
+                             },
+                             {
+                                 "Id":  "ms-python.python",
+                                 "Version":  "2025.6.1"
+                             },
+                             {
+                                 "Id":  "ms-vscode.powershell",
+                                 "Version":  "2025.4.0"
+                             }
+                         ],
+    "VsCodeExtensions":  [
+                             {
+                                 "Id":  "abcstark.vscode-llm-fastmcp-context",
+                                 "Version":  "1.3.3"
+                             },
+                             {
+                                 "Id":  "anthropic.claude-code",
+                                 "Version":  "2.1.281"
+                             },
+                             {
+                                 "Id":  "autodesk.autolispext",
+                                 "Version":  "1.6.3"
+                             },
+                             {
+                                 "Id":  "bianxianyang.htmlplay",
+                                 "Version":  "0.0.10"
+                             },
+                             {
+                                 "Id":  "github.codespaces",
+                                 "Version":  "1.18.16"
+                             },
+                             {
+                                 "Id":  "gstarsoft.gstarlisp",
+                                 "Version":  "1.0.1"
+                             },
+                             {
+                                 "Id":  "jpnacaduser.autolisp-language",
+                                 "Version":  "2.5.10"
+                             },
+                             {
+                                 "Id":  "ms-python.debugpy",
+                                 "Version":  "2026.6.0"
+                             },
+                             {
+                                 "Id":  "ms-python.python",
+                                 "Version":  "2026.4.0"
+                             },
+                             {
+                                 "Id":  "ms-python.vscode-pylance",
+                                 "Version":  "2026.4.1"
+                             },
+                             {
+                                 "Id":  "ms-python.vscode-python-envs",
+                                 "Version":  "1.36.0"
+                             },
+                             {
+                                 "Id":  "ms-vscode.powershell",
+                                 "Version":  "2025.4.0"
+                             }
+                         ],
+    "DockerImages":  [
+
+                     ],
+    "HowToReplay":  [
+                        "1. Przywroc obraz dysku (obraz-systemu.ps1 / Windows Backup).",
+                        "2. git pull tego repo (JSON = lista tego, co ma byc).",
+                        "3. start.bat -\u003e zainstaluj brakujace z profil_*.json.",
+                        "4. winget upgrade --all",
+                        "5. py -m pip install -r python-requirements.txt"
+                    ]
+}

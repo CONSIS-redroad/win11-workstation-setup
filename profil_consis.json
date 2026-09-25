@@ -96,6 +96,7 @@
       "Winget": [
         { "Name": "Git", "Id": "Git.Git", "Checked": true },
         { "Name": "GitHub CLI (gh)", "Id": "GitHub.cli", "Checked": true },
+        { "Name": "Gitleaks", "Id": "Gitleaks.Gitleaks", "Checked": true },
         { "Name": "GitHub Desktop", "Id": "GitHub.GitHubDesktop", "Checked": false },
         { "Name": "Docker Desktop", "Id": "Docker.DockerDesktop", "Checked": true },
         { "Name": "Node.js LTS", "Id": "OpenJS.NodeJS.LTS", "Checked": true },

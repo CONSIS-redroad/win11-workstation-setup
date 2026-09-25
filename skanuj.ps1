@@ -72,18 +72,27 @@ $installedApps = Get-ItemProperty $regPaths -ErrorAction SilentlyContinue |
     Select-Object @{N="Nazwa";E={$_.DisplayName.Trim()}}, @{N="Wersja";E={$_.DisplayVersion}}, @{N="Wydawca";E={$_.Publisher}} | 
     Sort-Object Nazwa -Unique
 
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+if (-not $scriptDir) { $scriptDir = "." }
+
+$devTools = $null
+$modDev = Join-Path $scriptDir "mod-zrzut-dev.ps1"
+if (Test-Path $modDev) {
+    . $modDev
+    $devTools = Get-DevToolSnapshot -SkipRequirements
+}
+
 $finalAudit = [PSCustomObject]@{
     System           = $systemInfo
     StanTweakow      = $tweaksReport
     AplikacjeAppX    = $appxReport
     StanUslug        = $servicesReport
     ProgramyRejestr  = $installedApps
+    SrodowiskoDev    = $devTools
 }
 
-$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-if (-not $scriptDir) { $scriptDir = "." }
 $outFile = Join-Path -Path $scriptDir -ChildPath "raport_stanu_$($env:COMPUTERNAME).json"
 
-$finalAudit | ConvertTo-Json -Depth 5 | Set-Content -Path $outFile -Encoding UTF8
+$finalAudit | ConvertTo-Json -Depth 12 | Set-Content -Path $outFile -Encoding UTF8
 Write-Host "`n[OK] Audyt zakonczony pomyslnie!" -ForegroundColor Green
 Write-Host "Wynik zapisany w: $outFile" -ForegroundColor Yellow
